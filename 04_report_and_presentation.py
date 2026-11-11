@@ -44,24 +44,8 @@ def main():
 ## القيود
 المحاكاة لا تثبت أثرًا في الواقع؛ ومقياس الأخطاء عالية الأثر مشتق من صحة القرار، لذا ليس مستقلًا عنها. عدم اكتشاف ضرر لا يثبت انعدام الضرر.
 """
-    (ROOT / "reports").mkdir(exist_ok=True)
-    (ROOT / "reports" / "One_Page_Report.md").write_text(report, encoding="utf-8")
-    slides = f"""# عرض المشروع — 10 دقائق (مخطط محتوى)
-
-1. الغلاف — عنوان المشروع واسم البرنامج (0:30)
-2. الملخص التنفيذي والقرار (1:00)
-3. السؤال والفرضية وتصميم A/B (1:30)
-4. حجم العينة والمدة (1:00)
-5. النتائج الرئيسية: A {results['accuracy']['A']:.2%} وB {results['accuracy']['B']:.2%} (2:00)
-6. CUPED والمقاييس الثانوية (1:30)
-7. مقاييس الحماية والقيود (1:30)
-8. القرار النهائي والتوصية: {decision} (1:00)
-
-النتائج محاكاة افتراضية. رسوم العرض في outputs/charts.
-"""
-    (ROOT / "reports" / "Presentation_Outline.md").write_text(slides, encoding="utf-8")
     (out / "final_decision.json").write_text(json.dumps({"decision": decision, "annual_impact_estimate": annual_impact, "note": "simulation only"}, ensure_ascii=False, indent=2), encoding="utf-8")
-    print("04 | Report and presentation outline generated:", decision)
+   print("04 | Final decision saved:", decision)
 
 if __name__ == "__main__":
     main()
